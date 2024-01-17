@@ -1,0 +1,19 @@
+[project]
+name = "Python-db-dev"
+version = "0.1.0"
+description = "Containerized python development example"
+authors = [
+    {name = "Joren Six", email = "joren.six@ugent.be"}
+]
+dependencies = [
+    "sqlalchemy>=2.0.25",
+    "black>=23.12.1",
+    "psycopg2>=2.9.9",
+    "ruff>=0.1.13",
+]
+requires-python = ">=3.9,<4.0"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.pdm]
+distribution = "false"

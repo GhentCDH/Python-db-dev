@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  python_dev:
+    image: python_dev
+    build:
+      context: .
+      args:
+          - USER_NAME=$PYTHON_DEV_USER_NAME
+          - USER_UID=$PYTHON_DEV_USER_UID
+          - USER_GIDD=$PYTHON_DEV_USER_GID
+    volumes:
+      - .:/app
+    environment:
+      PYTHON_DEV_CONNECTION_STRING: "postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_INTERNAL_TCP_PORT}/${DATABASE_NAME}"
+    command: $PYTHON_DEV_COMMAND
+
+  python_dev_db:
+    image: postgres:16.1-bookworm
+    container_name: "python_dev_db"
+    ports:
+      - "127.0.0.1:${DATABASE_EXTERNAL_TCP_PORT}:${DATABASE_INTERNAL_TCP_PORT}"
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: $DATABASE_USER
+      POSTGRES_PASSWORD: $DATABASE_PASSWORD
+      POSTGRES_DB: $DATABASE_NAME
