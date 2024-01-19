@@ -16,8 +16,7 @@ A disadvantage is that a bit of configuration is needed. This repository can hel
 
 To allow VS Code to access debugging the python plugin needs to be available *in the container*. So first start the `Attach to running container` and then in VS Code install the plugin in the container. The video below shows a way to do it.
 
-
-media/dev_in_container.mp4
+https://github.com/GhentCDH/Python-db-dev/assets/60453/a2b26004-ec0a-4b5e-92ec-740e5d07b910
 
 In the video above Visual Studio Code is used to start two containers. A container with a postgres database server and a container with a python development environment. A IDE session is attached to the running python container and running code and debugging is done in the container itself.
 
