@@ -33,7 +33,7 @@ The Python environment is managed by PDM, a python dependency manager. The scrip
 
 To format Python code via the ruff formatter, execute `pdm run ruff format src`. Ruff is also add as a pdm dependency. 
 
-The python image is based of the standard Python docker image but adds a couple extra packages to interact with the database and allow to install 
+The python image is based of the standard Python docker image but adds a couple of extra packages to interact with the database and installs the pdm manager.
 
 ## Credits
 
