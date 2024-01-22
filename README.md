@@ -31,7 +31,7 @@ https://github.com/GhentCDH/Python-db-dev/assets/60453/a2b26004-ec0a-4b5e-92ec-7
 
 The Python environment is managed by PDM, a python dependency manager. The script connects via `SQLAlchemy` - an ORM  - to the database which is accessed via a connection string which is configured via the `.env` and looks like `postgresql://exampleuser:examplepass@database/test`.
 
-To format Python code via the ruff formatter, execute `pdm run ruff format src`. Ruff is also add as a pdm dependency. 
+To format Python code via the ruff formatter, execute `pdm run ruff format src`. Ruff is also added as a pdm dependency. 
 
 The python image is based of the standard Python docker image but adds a couple of extra packages to interact with the database and installs the pdm manager.
 
