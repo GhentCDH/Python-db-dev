@@ -9,28 +9,31 @@ Another advantage is that it keeps a development machine clean: only docker need
 A disadvantage is that a bit of configuration is needed. This repository can help in this regard. 
 
 
+## Getting started
 
-`SQLAlchemy` is used as an ORM and the database is accessed via a connection string which looks similar to:
+To get started, clone and 'compose' the images. The `docker compse` command needs an `.env` file so this is linked to the configuration example. If this runs succesfuly, the IDE can be connected to the container for development.
 
-`postgresql://exampleuser:examplepass@database/test`
+`````sh
+git clone git@github.com:GhentCDH/Python-db-dev.git
+cd Python-db-dev
+ln -s env.example .env
+docker compose -f compose.dev.yaml up
+`````
 
-To allow VS Code to access debugging the python plugin needs to be available *in the container*. So first start the `Attach to running container` and then in VS Code install the plugin in the container. The video below shows a way to do it.
+In the video below Visual Studio Code is used to (re)start two containers. A container with a PostgreSQL database server and a container with a Python development environment. A IDE session is attached to the running Python container, executing code and debugging is done in the container itself. To allow VS Code to access debugging the Visual Studio Code Python plugin needs to be available *in the container*. So first start the `Attach to running container` and then in VS Code install the Python plugin in the container. 
+
 
 https://github.com/GhentCDH/Python-db-dev/assets/60453/a2b26004-ec0a-4b5e-92ec-740e5d07b910
 
-In the video above Visual Studio Code is used to start two containers. A container with a postgres database server and a container with a python development environment. A IDE session is attached to the running python container and running code and debugging is done in the container itself.
 
 
+## Background info on the Python environment
 
+The Python environment is managed by PDM, a python dependency manager. The script connects via `SQLAlchemy` - an ORM  - to the database which is accessed via a connection string which is configured via the `.env` and looks like `postgresql://exampleuser:examplepass@database/test`.
 
-## Format code
+To format Python code via the ruff formatter, execute `pdm run ruff format src`. Ruff is also add as a pdm dependency. 
 
-To format using ruff, execute
-
-```sh
-pdm run ruff format src
-```
-
+The python image is based of the standard Python docker image but adds a couple extra packages to interact with the database and allow to install 
 
 ## Credits
 
